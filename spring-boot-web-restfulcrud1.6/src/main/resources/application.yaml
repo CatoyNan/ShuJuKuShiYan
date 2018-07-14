@@ -1,0 +1,42 @@
+#默认使用配置
+spring:
+  profiles:
+    active: dev
+
+#公共配置与profiles选择无关
+mybatis:
+  typeAliasesPackage: com.xdd.entity
+  mapperLocations: classpath:mapper/*.xml
+
+
+---
+
+#开发配置
+spring:
+  profiles: dev
+  datasource:
+      username: root
+      password: 123456
+      url: jdbc:mysql://127.0.0.1:3306/mybatis2
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 6000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+
+
+
+
+  resources:
+     static-locations: classpath:/META-INF/resources/,classpath:/resources/, classpath:/static/, classpath:/public/
+  messages:
+    basename: =i18.login
